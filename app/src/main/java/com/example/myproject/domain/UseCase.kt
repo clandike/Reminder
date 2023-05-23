@@ -35,6 +35,7 @@ object UseCase {
         tasksData.deleteTaskForMainScreen(boolean,position)
     }
 
-
-
+    fun getEndedTasksToUseCase(): ArrayList<Task> {
+        return tasksData.getEndedTasks()
+    }
 }

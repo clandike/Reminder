@@ -7,10 +7,10 @@
     tools:context=".presentation.mainScreen.MainScreenFragment">
 
     <TextView
-        android:id="@+id/tvRecentlyAdded"
+        android:id="@+id/tvAllAdded"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recently added tasks:"
+        android:text="All added tasks:"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

@@ -18,11 +18,6 @@
         <activity
             android:name=".presentation.groupScreen.GroupActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainNavigationDrawerActivity"
-            android:exported="false"
-            android:label="@string/title_activity_main_navigation_drawer"
-            android:theme="@style/Theme.MyProject.NoActionBar" />
 
         <receiver
             android:name=".notification.Notification"

@@ -33,8 +33,8 @@ class MainActivity : AppCompatActivity() {
 
             navView.setNavigationItemSelectedListener {
                 when (it.itemId) {
-                    R.id.allTasks -> {
-                        UseCase.putNameGroup("ALL_TASKS@")
+                    R.id.completedTasks -> {
+                        UseCase.putNameGroup("CompletedTasks")
                         startActivity(intent)
                     }
                     R.id.todayTasks -> {
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                         UseCase.putNameGroup("Work")
                         startActivity(intent)
                     }
-                    R.id.StudyTasks -> {
+                    R.id.studyTasks -> {
                         UseCase.putNameGroup("Study")
                         startActivity(intent)
                     }

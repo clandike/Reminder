@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/allTasks"
-        android:title="All tasks"/>
+        android:id="@+id/completedTasks"
+        android:title="Completed tasks"/>
     <item
         android:id="@+id/todayTasks"
         android:title="Today"/>
@@ -14,7 +14,7 @@
         android:id="@+id/workTasks"
         android:title="Work tasks"/>
     <item
-        android:id="@+id/StudyTasks"
+        android:id="@+id/studyTasks"
         android:title="Study tasks"/>
 
 </menu>

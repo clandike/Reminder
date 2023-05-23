@@ -55,7 +55,7 @@
 
             <TextView
                 android:id="@+id/chTvMessage"
-                android:layout_width="290dp"
+                android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
                 tools:text="Message" />
@@ -94,9 +94,12 @@
 
         <TextView
             android:id="@+id/chTvGroup"
-            android:layout_width="wrap_content"
+            android:layout_width="45dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
             android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/linearLayout"
             app:layout_constraintTop_toBottomOf="@+id/dateLL"
             tools:text="Group" />

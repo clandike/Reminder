@@ -15,7 +15,7 @@ class AdapterForGroupActivity(val onClick: (position: Int) -> Unit) :
     inner class TaskViewHolder(val binding: TaskCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindItem(task: Task, position: Int) {
-            if (groupName == "ALL_TASKS@") {
+            if (groupName == "CompletedTasks") {
                 binding.deleteTaskButton.text = "REMOVE"
             }
             binding.chTvTitle.text = task.name

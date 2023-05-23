@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myproject.R
+import com.example.myproject.data.local.model.Task
 
 class GroupActivity : AppCompatActivity() {
 
@@ -20,10 +21,11 @@ class GroupActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(ViewModelGroupActivity::class.java)
 
         adapter = AdapterForGroupActivity { position ->
-            if (viewModel.nameGroup == "ALL_TASKS@") {
+            if (viewModel.nameGroup == "CompletedTasks") {
                 viewModel.deleteMainSreenTask(true, position)
             } else {
                 viewModel.deleteMainSreenTask(false, position)
+
             }
         }
         adapter.setTaskList(viewModel.getGroupTasks())
@@ -36,8 +38,8 @@ class GroupActivity : AppCompatActivity() {
             "Study" -> {
                 nameGroup.text = "Study tasks:"
             }
-            "ALL_TASKS@" -> {
-                nameGroup.text = "All created tasks:"
+            "CompletedTasks" -> {
+                nameGroup.text = "Completed tasks:"
             }
             "TODAY_TASKS@" -> {
                 nameGroup.text = "Today tasks:"

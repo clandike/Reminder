@@ -5,6 +5,8 @@ class TaskDataBase {
     private var taskProperties: TaskDataModel? = null
     var list = ArrayList<Task>()
     var listForMainScreen = ArrayList<Task>()
+    private var listOfEndedTasks = ArrayList<Task>()
+
 
     fun createTask(
         name: String,
@@ -21,8 +23,13 @@ class TaskDataBase {
     fun deleteTaskForMainScreen(boolean: Boolean, position: Int) {
         if (boolean) {
             list.remove(list[position])
+            listOfEndedTasks.remove(listOfEndedTasks[position])
         } else {
+            listOfEndedTasks.add(listForMainScreen[position])
             listForMainScreen.remove(listForMainScreen[position])
         }
+    }
+    fun getEndedTasks(): ArrayList<Task> {
+        return listOfEndedTasks
     }
 }
