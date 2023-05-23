@@ -18,7 +18,11 @@ class TaskDataBase {
         taskProperties = TaskDataModel(list)
     }
 
-    fun deleteTask(position: Int) {
-        listForMainScreen.remove(listForMainScreen[position])
+    fun deleteTaskForMainScreen(boolean: Boolean, position: Int) {
+        if (boolean) {
+            list.remove(list[position])
+        } else {
+            listForMainScreen.remove(listForMainScreen[position])
+        }
     }
 }

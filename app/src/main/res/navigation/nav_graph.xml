@@ -9,7 +9,7 @@
         android:id="@+id/mainScreenFragment"
         android:name="com.example.myproject.presentation.mainScreen.MainScreenFragment"
         android:label="main_screen_fragment"
-        tools:layout="@layout/main_screen_fragment" >
+        tools:layout="@layout/main_screen_fragment">
         <action
             android:id="@+id/main_to_createTask"
             app:destination="@id/createTaskFragment" />
@@ -18,7 +18,7 @@
         android:id="@+id/createTaskFragment"
         android:name="com.example.myproject.presentation.createTaskScreen.CreateTaskFragment"
         android:label="create_task_fragment"
-        tools:layout="@layout/create_task_fragment" >
+        tools:layout="@layout/create_task_fragment">
         <action
             android:id="@+id/createTask_to_main"
             app:destination="@id/mainScreenFragment" />

@@ -1,12 +1,18 @@
 package com.example.myproject.presentation.mainScreen
 
+import android.app.NotificationManager
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,23 +22,26 @@ import com.example.myproject.notification.notificationID
 
 class MainScreenFragment : Fragment() {
 
-    private lateinit var toggle: ActionBarDrawerToggle
+    lateinit var viewModel: ViewModelMainScreen
+    lateinit var adapter: AdapterMainScreen
+    private var positionTask = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
+
         return inflater.inflate(R.layout.main_screen_fragment, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel = ViewModelProvider(this).get(ViewModelMainScreen::class.java)
-
-        val adapter = AdapterMainScreen { position ->
+        viewModel = ViewModelProvider(this).get(ViewModelMainScreen::class.java)
+        adapter = AdapterMainScreen { position ->
             viewModel.deleteTask(position)
-            //context?.let { cancelNotification(it.applicationContext, notificationID) }
+            cancelNotification(context?.applicationContext!!, 3)
         }
         adapter.setTaskList(viewModel.getMainScreenTasks())
 
@@ -46,32 +55,19 @@ class MainScreenFragment : Fragment() {
 
         val layoutManager = LinearLayoutManager(context)
         rv.layoutManager = layoutManager
-
-
-//        toggle = ActionBarDrawerToggle(
-//            this@MainActivity,
-//            binding.drawerLayout,
-//            R.string.open,
-//            R.string.close
-//        )
-//        drawerLayout.addDrawerListener(toggle)
-//        toggle.syncState()
-//
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//
-//        navView.setNavigationItemSelectedListener {
-//            when (it.itemId) {
-//                R.id.allTasks -> {}
-//                R.id.todayTasks -> {}
-//                R.id.laterTasks -> {}
-//            }
-//            true
-//        }
     }
 
-    // private fun cancelNotification(ctx: Context, notifyId: Int) {
-    //     val notificationManager = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-    //     notificationManager.cancel(notifyId)
-    //      notificationManager.cancel(notifyId+1)
-    // }
+    override fun onResume() {
+        super.onResume()
+        adapter.setTaskList(viewModel.getMainScreenTasks())
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun cancelNotification(ctx: Context, position: Int) {
+        val notificationManager =
+            ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.cancel(position)
+    }
+
 }

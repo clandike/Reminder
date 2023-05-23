@@ -7,6 +7,12 @@ object UseCase {
 
     private val tasksData = TaskDataBase()
 
+    var groupName = ""
+
+    fun putNameGroup(name: String) {
+        groupName = name
+    }
+
     fun addTaskToUseCase(
         name: String,
         descriptor: String,
@@ -25,8 +31,10 @@ object UseCase {
         return tasksData.listForMainScreen
     }
 
-
-    fun useCaseDeleteTask(position: Int) {
-        tasksData.deleteTask(position)
+    fun useCaseDeleteMainScreenTask(boolean: Boolean, position: Int) {
+        tasksData.deleteTaskForMainScreen(boolean,position)
     }
+
+
+
 }

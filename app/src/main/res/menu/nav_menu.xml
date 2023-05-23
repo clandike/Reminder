@@ -10,4 +10,11 @@
     <item
         android:id="@+id/laterTasks"
         android:title="Up coming"/>
+    <item
+        android:id="@+id/workTasks"
+        android:title="Work tasks"/>
+    <item
+        android:id="@+id/StudyTasks"
+        android:title="Study tasks"/>
+
 </menu>

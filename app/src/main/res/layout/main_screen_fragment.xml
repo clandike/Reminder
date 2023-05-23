@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".presentation.mainScreen.MainScreenFragment">
 
+    <TextView
+        android:id="@+id/tvRecentlyAdded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recently added tasks:"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/createTaskBtn"
         android:layout_width="60dp"
@@ -25,5 +37,6 @@
         android:layout_height="match_parent"
         android:layout_marginTop="40dp"
         app:layout_constraintBottom_toTopOf="@+id/createTaskBtn" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

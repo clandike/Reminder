@@ -25,9 +25,6 @@ import java.util.*
 
 class CreateTaskFragment : Fragment() {
 
-    private lateinit var dateFormat: DateFormat
-    private lateinit var timeFormat: DateFormat
-
     private val viewModel = ViewModelCreateTask()
 
     override fun onCreateView(
@@ -44,7 +41,6 @@ class CreateTaskFragment : Fragment() {
 
         val btn = view.findViewById<Button>(R.id.confirm_button)
         btn.setOnClickListener {
-            notificationID = notificationID+1
             val name = view.findViewById<EditText>(R.id.etTitle)
             val description = view.findViewById<EditText>(R.id.etMessage)
             val group = view.findViewById<EditText>(R.id.etGroup)
@@ -52,15 +48,13 @@ class CreateTaskFragment : Fragment() {
             createNotificationChannel()
             findNavController().navigate(R.id.createTask_to_main).apply {
                 scheduleNotification()
-                timeFormat = android.text.format.DateFormat.getTimeFormat(context?.applicationContext)
-                dateFormat = android.text.format.DateFormat.getLongDateFormat(context?.applicationContext)
-
+                notificationID++
                 viewModel.addTask(
                     name.text.toString(),
                     description.text.toString(),
                     group.text.toString(),
-                    dateFormat.format(Date(getTime())),
-                    timeFormat.format(Date(getTime()))
+                    DateFormat.getDateInstance().format(Date(getTime())),
+                    DateFormat.getTimeInstance().format(Date(getTime()))
                 )
             }
         }

@@ -1,20 +1,23 @@
-package com.example.myproject.presentation.mainScreen
+package com.example.myproject.presentation.groupScreen
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myproject.data.local.model.Task
 import com.example.myproject.databinding.TaskCardBinding
+import com.example.myproject.domain.UseCase.groupName
 
-class AdapterMainScreen(val onClick: (position: Int) -> Unit) :
-    RecyclerView.Adapter<AdapterMainScreen.TaskViewHolder>() {
+class AdapterForGroupActivity(val onClick: (position: Int) -> Unit) :
+    RecyclerView.Adapter<AdapterForGroupActivity.TaskViewHolder>() {
 
     private val tList = ArrayList<Task>()
 
     inner class TaskViewHolder(val binding: TaskCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun bindItem(task: Task, position: Int) {
+            if (groupName == "ALL_TASKS@") {
+                binding.deleteTaskButton.text = "REMOVE"
+            }
             binding.chTvTitle.text = task.name
             binding.chTvMessage.text = task.description
             binding.chTvGroup.text = task.group

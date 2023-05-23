@@ -1,14 +1,23 @@
 package com.example.myproject.data.local.model
 
+import androidx.room.Entity
+import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "tasks")
 final data class TaskDataModel(
-    val tasks: ArrayList<Task> = arrayListOf(),
+    @SerializedName("tasks")
+    val tasks: ArrayList<Task> = arrayListOf()
 )
 
 data class Task(
+    @SerializedName("name")
     val name: String?,
+    @SerializedName("description")
     val description: String?,
+    @SerializedName("group")
     val group: String?,
-    val dateFormat: String,
-    val timeFormat: String,
+    @SerializedName("dateFormat")
+    val dateFormat: String?,
+    @SerializedName("timeFormat")
+    val timeFormat: String?,
 )
